@@ -2,8 +2,6 @@ package forme;
 
 import Interfaces.Calcul;
 
-import javax.swing.*;
-
 public abstract class Forme implements Calcul {
 
     private int x;
@@ -76,45 +74,30 @@ public abstract class Forme implements Calcul {
 
     /**
      * Transformation géométrique par agrandissement ou réduction
-     * @param A
-     * @param x
-     * @param y
-     * @return tableau de doubles
      */
-    public abstract double [] homothetie(double A[], double x, double y);
+    public abstract void homothetie(int width, int height);
 
     /**
      * Dans le plan cartésien,
      * une matrice de transformation est une matrice qui permet,
      * à partir des coordonnées d'un point initial représentées par une matrice colonne,
      * de trouver celles de son image par une transformation géométrique donnée.
-     * @param A
-     * @return tableau de doubles
      */
-    public abstract double [] translation (double A[]);
+    public abstract void translation (int width, int height);
 
     /**
      * En mathématiques, une matrice orthogonale de déterminant 1
-     * @param C
-     * @param A
-     * @param angle
-     * @return tableau de doubles
      */
-    public abstract double [] rotation(double C[], double A[], double angle);
+    public abstract void rotation(int width, int height);
 
     /**
      * Fait tourner les figures de 180°
-     * @param A
-     * @return tableau de doubles
      */
-    public abstract double [] symetrie_centrale(double A[]);
+    public abstract void symetrie_centrale(int width, int height);
 
     /**
      * Transformation géométrique du plan qui modélise un « pliage » ou un « effet miroir »
-     * @param A
-     * @return tableau de doubles
      */
-    public abstract double [] symetrie_axiale(double A[]);
-
+    public abstract void symetrie_axiale(int width, int height);
 
 }

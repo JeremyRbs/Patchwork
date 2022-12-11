@@ -17,27 +17,30 @@ public class Ellipse extends Forme{
     }
 
     @Override
-    public double[] homothetie(double[] A, double x, double y) {
-        return new double[0];
+    public void homothetie(int width, int height) {
+
     }
 
     @Override
-    public double[] translation(double[] A) {
-        return new double[0];
+    public void translation(int width, int height) {
+        System.out.println("Avant translation ellipse: \nx: " + this.getX() + ", y: " + getY());
+        this.setX(this.getX()+50);
+        this.setY(this.getY()+50);
+        System.out.println("Après translation ellipse: \nx: " + this.getX() + ", y: " + getY());
     }
 
     @Override
-    public double[] rotation(double[] C, double[] A, double angle) {
-        return new double[0];
+    public void rotation(int width, int height) {
+
     }
 
     @Override
-    public double[] symetrie_centrale(double[] A) {
-        return new double[0];
+    public void symetrie_centrale(int width, int height) {
+
     }
 
     @Override
-    public double[] symetrie_axiale(double[] A) {
-        return new double[0];
+    public void symetrie_axiale(int width, int height) {
+
     }
 }

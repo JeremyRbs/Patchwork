@@ -7,28 +7,33 @@ public class Cercle extends Forme {
     }
 
     @Override
-    public double[] homothetie(double[] A, double x, double y) {
-        return new double[0];
+    public void homothetie(int width, int height) {
+
     }
 
     @Override
-    public double[] translation(double[] A) {
-        return new double[0];
+    public void translation(int width, int height) {
+        System.out.println("Avant translation cercle: \nx: " + this.getX() + ", y: " + getY());
+        this.setX(this.getX()+50);
+        this.setY(this.getY()+50);
+        System.out.println("Après translation cercle: \nx: " + this.getX() + ", y: " + getY());
     }
 
     @Override
-    public double[] rotation(double[] C, double[] A, double angle) {
-        return new double[0];
+    public void rotation(int width, int height) {
+        System.out.println("Avant rotation cercle: \nx: " + this.getX() + ", y: " + getY());
+        System.out.println("Après rotation cercle: \nx: " + this.getX() + ", y: " + getY());
     }
 
     @Override
-    public double[] symetrie_centrale(double[] A) {
-        return new double[0];
+    public void symetrie_centrale(int width, int height) {
+        System.out.println("Symétrie centrale effectuée avec succès !");
     }
 
     @Override
-    public double[] symetrie_axiale(double[] A) {
-        return new double[0];
+    public void symetrie_axiale(int width, int height) {
+        this.setX(this.getX());
+        System.out.println("Symétrie centrale effectuée avec succès ! ");
     }
 
     @Override

@@ -1,81 +1,101 @@
 import Interfaces.Calcul;
+import forme.Forme;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 
 public class Dessin implements Calcul {
 
-    private List<Image> listeImages;
+    private HashSet<Image> listeImages;
+    private JPanel panelDessin;
 
-    private int nbAletoire;
+    private final int nbImages = 4;
+    private Border blackline = BorderFactory.createLineBorder(Color.black);
 
     public Dessin() {
-        this.listeImages = new ArrayList<Image>();
-        this.nbAletoire = (int) Math.round(Math.random() * (8 - 1 + 1) + 1);
-        for(int i=0; i<nbAletoire; i++){
+        this.listeImages = new HashSet<Image>();
+        for(int i=0; i<4; i++){
             listeImages.add(new Image());
         }
+        this.panelDessin = new JPanel();
+        this.panelDessin.setLayout(new GridLayout(2, 2));
+        this.panelDessin.setBorder(this.blackline);
     }
 
-    public List<Image> getListeImages() {
-        return listeImages;
-    }
-
-    public void setListeImages(List<Image> listeImages) {
+    public Dessin(HashSet<Image> listeImages) {
         this.listeImages = listeImages;
     }
 
-    public JPanel getDessin(){
+    public HashSet<Image> getListeImages() {
+        return listeImages;
+    }
 
-        Border blackline = BorderFactory.createLineBorder(Color.black);
+    public void setListeImages(HashSet<Image> listeImages) {
+        this.listeImages = listeImages;
+    }
 
-        JPanel panelMaster = new JPanel();
-        switch (listeImages.size()) {
-            case 1:
-                panelMaster.setLayout(new GridLayout(1, 1));
-                break;
-            case 2:
-                panelMaster.setLayout(new GridLayout(1, 2));
-                break;
-            case 3:
-                panelMaster.setLayout(new GridLayout(1, 3));
-                break;
-            case 4:
-                panelMaster.setLayout(new GridLayout(2, 2));
-                break;
-            case 5:
-                panelMaster.setLayout(new GridLayout(1, 5));
-                break;
-            case 6:
-                panelMaster.setLayout(new GridLayout(2, 3));
-                break;
-            case 7:
-                panelMaster.setLayout(new GridLayout(1, 7));
-                break;
-            case 8:
-                panelMaster.setLayout(new GridLayout(2,  4));
-                break;
-            case 9:
-                panelMaster.setLayout(new GridLayout(3, 3));
-                break;
-            default:
-                break;
+    public JPanel getPanelDessin() {
+
+        if(panelDessin != null){
+            panelDessin.removeAll();
         }
 
-        panelMaster.setBorder(blackline);
-
-        for(int i=0; i<listeImages.size(); i++){
+        for(int i=0; i<nbImages; i++){
             JPanel panel = new JPanel();
             panel.setLayout(new BorderLayout());
             panel.setBorder(blackline);
             panel.add(new Image(),BorderLayout.CENTER);
-            panelMaster.add(panel);
+            panelDessin.add(panel);
         }
 
-        return panelMaster;
+        return panelDessin;
+    }
+
+    public void setPanelDessin(JPanel panelDessin) {
+        this.panelDessin = panelDessin;
+    }
+
+    public void getHomothetieDessin(){
+
+    }
+    public void getTranslationDessin(){
+
+        HashSet<Forme> listeTranslationFormes = new HashSet<Forme>();
+        HashSet<Image> listeTranslationImages = new HashSet<Image>();
+
+        for(Image image: listeImages){
+            for(Forme forme: image.getListeFormes()){
+                forme.translation(200,200);
+                listeTranslationFormes.add(forme);
+            }
+            image.setListeFormes(listeTranslationFormes);
+            listeTranslationImages.add(image);
+            listeTranslationFormes.clear();
+        }
+
+        panelDessin.revalidate();
+        panelDessin.repaint();
+
+        //panelDessin.add(new Image(listeFormes));
+        this.setListeImages(listeTranslationImages);
+    }
+    public void getRotationDessin(){
+
+    }
+    public void getSymetrieCentraleDessin(){
+
+    }
+    public void getSymetrieAxialeDessin(){
+
+    }
+    public void getTriParPerimetreDessin(){
+
+    }
+    public void getTriParAireDessin(){
+
     }
 
     @Override
@@ -83,9 +103,10 @@ public class Dessin implements Calcul {
 
         double p = 0;
 
-        for(int i=0; i<listeImages.size();i++){
-            p += listeImages.get(i).perimetre();
+        for(Image image: listeImages){
+            p += image.perimetre();
         }
+        System.out.println("Périmètre du dessin: " + p + "\n");
         return p;
     }
 
@@ -94,9 +115,10 @@ public class Dessin implements Calcul {
 
         double a = 0;
 
-        for(int i=0; i<listeImages.size();i++){
-            a += listeImages.get(i).aire();
+        for(Image image: listeImages){
+            a += image.aire();
         }
+        System.out.println("Aire du dessin: " + a + "\n");
         return a;
     }
 }

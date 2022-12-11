@@ -1,22 +1,126 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
 public class Main {
 
     public static void main(String[] args) {
 
+        // Récupération de la taille de l'écran et définition de la hauteur et de la largeur
         Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
-
         int width = tailleEcran.width;
         int height = tailleEcran.height;
 
+        // Création et définition de la fenêtre
         JFrame frame = new JFrame();
-
         frame.setSize(width/2, height/2);
         frame.setTitle("Patchwork");
-        Dessin d = new Dessin();
-        frame.add(d.getDessin());
+
+        // Séparation de la fenêtre en deux parties
+        JPanel panelPrincipal = new JPanel(new GridLayout(2,1));
+        JPanel panelMenu = new JPanel(new GridLayout(2,1));
+
+        /*
+         Séparation et définition de la fenêtre supérieure en deux parties
+         */
+
+        // Première sous-partie
+        JPanel sousPanelMenu_1 = new JPanel(new BorderLayout());
+        JLabel label = new JLabel("PATCHWORK", JLabel.CENTER);
+        label.setFont(new Font("Serif", Font.BOLD, 20));
+        sousPanelMenu_1.add(label, BorderLayout.CENTER);
+
+        // Deuxième sous-partie
+        JPanel sousPanelMenu_2 = new JPanel();
+        JButton btn_generer = new JButton( "Générer un dessin");
+        JButton btn_homothetie = new JButton("Homothétie");
+        JButton btn_translation = new JButton("Translation");
+        JButton btn_rotation = new JButton("Rotation");
+        JButton btn_symetrie_centrale = new JButton("Symétrie Centrale");
+        JButton btn_symetrie_axiale = new JButton("Symetrie Axiale");
+        JButton btn_tri_par_perimetre = new JButton("Tri par périmètre");
+        JButton btn_tri_par_aire = new JButton("Tri par aire");
+
+        /*
+         Définition de la fenêtre inférieure
+         */
+
+        // Création d'un dessin
+        Dessin dessin = new Dessin();
+
+        // Ajout du panel de menu dans le panel principal
+        panelPrincipal.add(panelMenu);
+
+        // Ajout d'un dessin dans le panel principal
+        panelPrincipal.add(dessin.getPanelDessin());
+
+        /*
+        // Affichage des formes
+        for(Image image: dessin.getListeImages()){
+            for(Forme forme: image.getListeFormes()){
+                if(forme instanceof Cercle){
+                    System.out.print("\nCercle: ");
+                }else if(forme instanceof Ellipse){
+                    System.out.print("\nEllipse: ");
+                } else if (forme instanceof Polygone){
+                    System.out.print("\nPolygone: ");
+                } else{
+                    System.out.print("\nLigne: ");
+                }
+                System.out.print(forme.perimetre());
+            }
+            System.out.println("\n\nImage: " + image.perimetre());
+        }
+        */
+
+        btn_generer.addActionListener(e -> {
+            panelPrincipal.remove(dessin.getPanelDessin());
+            panelPrincipal.revalidate();
+            panelPrincipal.repaint();
+            panelPrincipal.add(dessin.getPanelDessin());
+        });
+
+        btn_homothetie.addActionListener(e -> {
+            dessin.getHomothetieDessin();
+        });
+
+        btn_translation.addActionListener(e -> {
+            dessin.getTranslationDessin();
+            panelPrincipal.revalidate();
+            panelPrincipal.repaint();
+        });
+
+        btn_rotation.addActionListener(e -> {
+            dessin.getRotationDessin();
+        });
+
+        btn_symetrie_centrale.addActionListener(e -> {
+            dessin.getSymetrieCentraleDessin();
+        });
+
+        btn_symetrie_axiale.addActionListener(e -> {
+            dessin.getSymetrieAxialeDessin();
+        });
+
+        btn_tri_par_perimetre.addActionListener(e -> {
+            dessin.getTriParPerimetreDessin();
+        });
+
+        btn_tri_par_aire.addActionListener(e -> {
+            dessin.getTriParAireDessin();
+        });
+
+        sousPanelMenu_2.add(btn_generer);
+        sousPanelMenu_2.add(btn_homothetie);
+        sousPanelMenu_2.add(btn_translation);
+        sousPanelMenu_2.add(btn_rotation);
+        sousPanelMenu_2.add(btn_symetrie_centrale);
+        sousPanelMenu_2.add(btn_symetrie_axiale);
+        sousPanelMenu_2.add(btn_tri_par_perimetre);
+        sousPanelMenu_2.add(btn_tri_par_aire);
+
+        panelMenu.add(sousPanelMenu_1);
+        panelMenu.add(sousPanelMenu_2);
+        frame.add(panelPrincipal);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);

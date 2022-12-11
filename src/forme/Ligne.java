@@ -1,5 +1,7 @@
 package forme;
 
+import java.awt.*;
+
 public class Ligne extends Forme {
 
     public Ligne(int x1, int y1, int x2, int y2) {
@@ -17,27 +19,32 @@ public class Ligne extends Forme {
     }
 
     @Override
-    public double[] homothetie(double[] A, double x, double y) {
-        return new double[0];
+    public void homothetie(int width, int height) {
+
     }
 
     @Override
-    public double[] translation(double[] A) {
-        return new double[0];
+    public void translation(int width, int height) {
+        System.out.println("Avant translation ligne: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
+        this.setX(this.getX()+50);
+        this.setY(this.getY()+50);
+        this.setWidth(this.getWidth()+50);
+        this.setHeight(this.getHeight()+50);
+        System.out.println("Après translation ligne: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
     }
 
     @Override
-    public double[] rotation(double[] C, double[] A, double angle) {
-        return new double[0];
+    public void rotation(int width, int height) {
+
     }
 
     @Override
-    public double[] symetrie_centrale(double[] A) {
-        return new double[0];
+    public void symetrie_centrale(int width, int height) {
+
     }
 
     @Override
-    public double[] symetrie_axiale(double[] A) {
-        return new double[0];
+    public void symetrie_axiale(int width, int height) {
+
     }
 }
