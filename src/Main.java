@@ -1,3 +1,5 @@
+import forme.*;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -51,32 +53,13 @@ public class Main {
         panelPrincipal.add(panelMenu);
 
         // Ajout d'un dessin dans le panel principal
-        panelPrincipal.add(dessin.getPanelDessin());
-
-        /*
-        // Affichage des formes
-        for(Image image: dessin.getListeImages()){
-            for(Forme forme: image.getListeFormes()){
-                if(forme instanceof Cercle){
-                    System.out.print("\nCercle: ");
-                }else if(forme instanceof Ellipse){
-                    System.out.print("\nEllipse: ");
-                } else if (forme instanceof Polygone){
-                    System.out.print("\nPolygone: ");
-                } else{
-                    System.out.print("\nLigne: ");
-                }
-                System.out.print(forme.perimetre());
-            }
-            System.out.println("\n\nImage: " + image.perimetre());
-        }
-        */
+        panelPrincipal.add(dessin.changePanelDessin());
 
         btn_generer.addActionListener(e -> {
             panelPrincipal.remove(dessin.getPanelDessin());
             panelPrincipal.revalidate();
             panelPrincipal.repaint();
-            panelPrincipal.add(dessin.getPanelDessin());
+            panelPrincipal.add(dessin.changePanelDessin());
         });
 
         btn_homothetie.addActionListener(e -> {
@@ -84,7 +67,10 @@ public class Main {
         });
 
         btn_translation.addActionListener(e -> {
-            dessin.getTranslationDessin();
+            panelPrincipal.remove(dessin.getPanelDessin());
+            panelPrincipal.revalidate();
+            panelPrincipal.repaint();
+            panelPrincipal.add(dessin.getTranslationDessin());
             panelPrincipal.revalidate();
             panelPrincipal.repaint();
         });

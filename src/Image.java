@@ -28,8 +28,8 @@ public class Image extends JComponent implements Calcul {
 
             this.x = (int) Math.round(Math.random() * (10 - 0 + 1) + 0);
             this.y = (int) Math.round(Math.random() * (10 - 0 + 1) + 0);
-            this.width = (int) Math.round(Math.random() * (50 - 10 + 1) + 10);
-            this.height = (int) Math.round(Math.random() * (50 - 10 + 1) + 10);
+            this.width = (int) Math.round(Math.random() * (100 - 20 + 1) + 20);
+            this.height = (int) Math.round(Math.random() * (100 - 20 + 1) + 20);
 
             switch (nbAleatoire){
                 case 1:
@@ -45,7 +45,7 @@ public class Image extends JComponent implements Calcul {
                     listeFormes.add(new Ligne(x,y,width,height));
                     break;
                 case 4:
-                    this.nbAleatoireTableau = 3;//(int) Math.round(Math.random() * (8 - 3 + 1) + 3);
+                    this.nbAleatoireTableau = (int) Math.round(Math.random() * (4 - 1 + 1) + 1);
 
                     this.tab_x= new int[nbAleatoireTableau];
                     this.tab_y= new int[nbAleatoireTableau];
@@ -76,15 +76,23 @@ public class Image extends JComponent implements Calcul {
 
     public void paint(Graphics g){
 
+        System.out.println("\nFormes :");
+
         for(Forme forme: listeFormes) {
 
-            if(forme instanceof Cercle || forme instanceof Ellipse) {
+            if(forme instanceof Cercle) {
                 g.drawOval(forme.getX(), forme.getY(), forme.getWidth(), forme.getHeight());
+                System.out.println("CERCLE");
+            }else if(forme instanceof Ellipse){
+                g.drawOval(forme.getX(), forme.getY(), forme.getWidth(), forme.getHeight());
+                System.out.println("ELLIPSE");
             }else if(forme instanceof Ligne){
                 g.drawLine(forme.getX(), forme.getY(), forme.getWidth(), forme.getHeight());
+                System.out.println("LIGNE");
             }else{
                 g.drawPolygon(forme.getTab_x(),forme.getTab_y(),forme.getTab_x().length);
                 g.fillPolygon(forme.getTab_x(),forme.getTab_y(),forme.getTab_x().length);
+                System.out.println("POLYGONE");
             }
         }
     }

@@ -41,8 +41,10 @@ public class Polygone extends Forme {
     @Override
     public void translation(int width, int height) {
 
-        ArrayList<Integer> tab_x_tmp = new ArrayList<Integer>();
-        ArrayList<Integer> tab_y_tmp = new ArrayList<Integer>();
+        int [] tab_x_tmp = new int [this.getTab_x().length];
+        int [] tab_y_tmp = new int [this.getTab_y().length];
+
+        int i = 0;
 
         System.out.print("Liste des coordonnées avant translation d'un polygone :\n");
         for(Integer entier: this.getTab_x()){
@@ -54,10 +56,19 @@ public class Polygone extends Forme {
 
         for(Integer entier: this.getTab_x()){
             entier += 50;
+            tab_x_tmp[i] = entier;
+            i++;
         }
+        i=0;
         for(Integer entier: this.getTab_y()){
             entier += 50;
+            tab_y_tmp[i] = entier;
+            i++;
         }
+        i=0;
+
+        this.setTab_x(tab_x_tmp);
+        this.setTab_y(tab_y_tmp);
 
         System.out.print("Liste des coordonnées après translation d'un polygone :\n");
         for(Integer entier: this.getTab_x()){

@@ -35,7 +35,6 @@ public class Ligne extends Forme {
 
     @Override
     public void rotation(int width, int height) {
-
     }
 
     @Override

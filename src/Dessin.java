@@ -1,10 +1,12 @@
 import Interfaces.Calcul;
+import forme.Cercle;
+import forme.Ellipse;
 import forme.Forme;
+import forme.Ligne;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Dessin implements Calcul {
@@ -13,11 +15,12 @@ public class Dessin implements Calcul {
     private JPanel panelDessin;
 
     private final int nbImages = 4;
+    private int compter = 0;
     private Border blackline = BorderFactory.createLineBorder(Color.black);
 
     public Dessin() {
         this.listeImages = new HashSet<Image>();
-        for(int i=0; i<4; i++){
+        for(int i=0; i<nbImages; i++){
             listeImages.add(new Image());
         }
         this.panelDessin = new JPanel();
@@ -38,19 +41,37 @@ public class Dessin implements Calcul {
     }
 
     public JPanel getPanelDessin() {
+        return panelDessin;
+    }
+    public JPanel changePanelDessin() {
 
-        if(panelDessin != null){
+        HashSet<Image> nouvelleListeImages = new HashSet<Image>();
+
+        if(compter != 0){
+            System.out.println("\nMODIFICATION\n");
             panelDessin.removeAll();
+            for(Image image: listeImages){
+                JPanel panel = new JPanel();
+                panel.setLayout(new BorderLayout());
+                panel.setBorder(blackline);
+                Image nouvelleImage = new Image();
+                nouvelleListeImages.add(nouvelleImage);
+                panel.add(nouvelleImage,BorderLayout.CENTER);
+                panelDessin.add(panel);
+            }
+            this.setListeImages(nouvelleListeImages);
+            compter++;
+        } else {
+            System.out.println("\nCREATION\n");
+            for(Image image: listeImages){
+                JPanel panel = new JPanel();
+                panel.setLayout(new BorderLayout());
+                panel.setBorder(blackline);
+                panel.add(image,BorderLayout.CENTER);
+                panelDessin.add(panel);
+            }
+            compter++;
         }
-
-        for(int i=0; i<nbImages; i++){
-            JPanel panel = new JPanel();
-            panel.setLayout(new BorderLayout());
-            panel.setBorder(blackline);
-            panel.add(new Image(),BorderLayout.CENTER);
-            panelDessin.add(panel);
-        }
-
         return panelDessin;
     }
 
@@ -61,26 +82,30 @@ public class Dessin implements Calcul {
     public void getHomothetieDessin(){
 
     }
-    public void getTranslationDessin(){
+    public JPanel getTranslationDessin(){
 
-        HashSet<Forme> listeTranslationFormes = new HashSet<Forme>();
-        HashSet<Image> listeTranslationImages = new HashSet<Image>();
+        HashSet<Image> nouvelleListeImages = new HashSet<Image>();
+        HashSet<Forme> nouvelleListeFormes = new HashSet<Forme>();
 
-        for(Image image: listeImages){
-            for(Forme forme: image.getListeFormes()){
-                forme.translation(200,200);
-                listeTranslationFormes.add(forme);
+        if(panelDessin != null) {
+            System.out.println("\nTRANSLATION\n");
+            panelDessin.removeAll();
+            for (Image image : listeImages) {
+                JPanel panel = new JPanel();
+                panel.setLayout(new BorderLayout());
+                panel.setBorder(blackline);
+                for(Forme forme: image.getListeFormes()){
+                    forme.translation(200,200);
+                    nouvelleListeFormes.add(forme);
+                }
+                image.setListeFormes(nouvelleListeFormes);
+                nouvelleListeImages.add(image);
+                panel.add(image, BorderLayout.CENTER);
+                panelDessin.add(panel);
             }
-            image.setListeFormes(listeTranslationFormes);
-            listeTranslationImages.add(image);
-            listeTranslationFormes.clear();
+            this.setListeImages(nouvelleListeImages);
         }
-
-        panelDessin.revalidate();
-        panelDessin.repaint();
-
-        //panelDessin.add(new Image(listeFormes));
-        this.setListeImages(listeTranslationImages);
+        return panelDessin;
     }
     public void getRotationDessin(){
 
