@@ -60,7 +60,6 @@ public class Dessin implements Calcul {
                 panelDessin.add(panel);
             }
             this.setListeImages(nouvelleListeImages);
-            compter++;
         } else {
             System.out.println("\nCREATION\n");
             for(Image image: listeImages){
@@ -70,8 +69,8 @@ public class Dessin implements Calcul {
                 panel.add(image,BorderLayout.CENTER);
                 panelDessin.add(panel);
             }
-            compter++;
         }
+        compter++;
         return panelDessin;
     }
 
@@ -99,6 +98,7 @@ public class Dessin implements Calcul {
                     nouvelleListeFormes.add(forme);
                 }
                 image.setListeFormes(nouvelleListeFormes);
+                nouvelleListeFormes = new HashSet<>();
                 nouvelleListeImages.add(image);
                 panel.add(image, BorderLayout.CENTER);
                 panelDessin.add(panel);
