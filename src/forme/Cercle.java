@@ -38,8 +38,12 @@ public class Cercle extends Forme {
 
     @Override
     public void symetrie_axiale(int width, int height) {
-        this.setX(this.getX());
-        System.out.println("Symétrie centrale effectuée avec succès ! ");
+        System.out.println("Avant symetrie axiale cercle: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
+        int x_axe_temp = this.getX() + width/2;
+        int distance_x2_de_axe_temp = x_axe_temp - this.getWidth();
+        this.setWidth(this.getWidth()+2*distance_x2_de_axe_temp);
+        this.setX(this.getX()+2*(width/2));
+        System.out.println("Après symetrie axiale cercle: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
     }
 
     @Override
