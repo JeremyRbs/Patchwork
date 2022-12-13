@@ -93,7 +93,7 @@ public abstract class Forme implements Calcul {
     /**
      * Fait tourner les figures de 180°
      */
-    public abstract void symetrie_centrale(int width, int height);
+    public abstract void symetrie_centrale(int width, int height, int degres);
 
     /**
      * Transformation géométrique du plan qui modélise un « pliage » ou un « effet miroir »
