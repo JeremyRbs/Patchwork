@@ -36,7 +36,16 @@ public class Polygone extends Forme {
 
     @Override
     public void homothetie(int width, int height) {
+        System.out.println("Avant homothetie polygone: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
+        for(int i=0; i<getTab_x().length; i++){
+            this.setX(this.getX()+50);
+        }
+        this.setY(this.getY()+50);
+        this.setWidth(this.getWidth()-50);
+        this.setHeight(this.getHeight()-50);
+        System.out.println("Après homothetie polygone: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
     }
+
 
     @Override
     public void translation(int width, int height) {
@@ -80,7 +89,7 @@ public class Polygone extends Forme {
     }
 
     @Override
-    public void rotation(int width, int height) {
+    public void rotation(int width, int height, int degres) {
 
     }
 
