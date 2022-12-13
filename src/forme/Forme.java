@@ -88,7 +88,7 @@ public abstract class Forme implements Calcul {
     /**
      * En mathématiques, une matrice orthogonale de déterminant 1
      */
-    public abstract void rotation(int width, int height);
+    public abstract void rotation(int width, int height, int degres);
 
     /**
      * Fait tourner les figures de 180°

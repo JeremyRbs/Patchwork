@@ -20,7 +20,7 @@ public class Cercle extends Forme {
     }
 
     @Override
-    public void rotation(int width, int height) {
+    public void rotation(int width, int height, int degres) {
         System.out.println("Avant rotation cercle: \nx: " + this.getX() + ", y: " + getY());
         System.out.println("Après rotation cercle: \nx: " + this.getX() + ", y: " + getY());
     }

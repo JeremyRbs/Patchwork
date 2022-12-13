@@ -80,7 +80,7 @@ public class Polygone extends Forme {
     }
 
     @Override
-    public void rotation(int width, int height) {
+    public void rotation(int width, int height, int degres) {
 
     }
 
