@@ -1,6 +1,7 @@
 package forme;
 
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.security.InvalidParameterException;
 
 public class Ligne extends Forme {
@@ -40,6 +41,27 @@ public class Ligne extends Forme {
     }
 
     @Override
+    /*public void rotation(int width, int height, int degres) {
+        System.out.println("Avant rotation ligne: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
+        int xM, yM, x, y;
+
+        if(degres<0 || degres > 360){
+            throw new InvalidParameterException("Mauvais choix d'angle");
+        }
+
+        degres *= Math.PI / 180;
+        xM = this.getX()-this.getWidth();
+        yM= this.getY()-this.getHeight();
+
+        x=(int) (xM * Math.cos(degres)+ yM * Math.sin(degres) + this.getWidth()));
+        y=(int) (- xM * Math.sin(degres) + yM * Math.cos(degres)+ this.getHeight()));
+        this.setWidth(Math.round(x));
+        this.setHeight(Math.round(y));
+
+
+        System.out.println("Après rotation ligne: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
+    }*/
+
     public void rotation(int width, int height, int degres) {
         System.out.println("Avant rotation ligne: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
         int xM, yM, x, y;
@@ -54,12 +76,12 @@ public class Ligne extends Forme {
         System.out.println("Après rotation ligne: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
     }
 
+
     @Override
     public void symetrie_centrale(int width, int height) {
         System.out.println("Avant symetrie centrale ligne: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
 
         int distance_x=this.getWidth()+100;
-        /*
         int distance= (int) Point2D.distance(this.getX(), this.getWidth(), this.getY(), this.getHeight());
         int distance_y=this.getHeight()+distance/2;
 
@@ -69,7 +91,6 @@ public class Ligne extends Forme {
         this.setHeight(distance_y-getHeight());
 
         System.out.println("Après symetrie centrale ligne: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
-        */
     }
 
     @Override

@@ -1,5 +1,8 @@
 import Interfaces.Calcul;
+import forme.Cercle;
+import forme.Ellipse;
 import forme.Forme;
+import forme.Ligne;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -141,7 +144,7 @@ public class Dessin implements Calcul {
                 panel.setLayout(new BorderLayout());
                 panel.setBorder(blackline);
                 for(Forme forme: image.getListeFormes()){
-                    forme.rotation(200,200, 30);
+                    forme.rotation(200,200, 45);
                     nouvelleListeFormes.add(forme);
                 }
                 image.setListeFormes(nouvelleListeFormes);
