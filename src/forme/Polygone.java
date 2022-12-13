@@ -100,6 +100,42 @@ public class Polygone extends Forme {
 
     @Override
     public void symetrie_axiale(int width, int height) {
+        int [] tab_x_tmp = new int [this.getTab_x().length];
+        int [] tab_y_tmp = new int [this.getTab_y().length];
 
+        int i = 0;
+
+        System.out.print("Liste des coordonnées avant symétrie axiale d'un polygone :\n");
+        for(Integer entier: this.getTab_x()){
+            System.out.println("x: " + entier);
+        }
+        for(Integer entier: this.getTab_y()){
+            System.out.println("y: " + entier);
+        }
+
+        int[] temp = this.getTab_x();
+        int x_axe_temp = temp[0] + width/2;
+        int distance_x2_de_axe_temp = x_axe_temp - this.getWidth();
+        for(Integer entier: this.getTab_x()){
+            if(i==0){
+                entier = entier + 2*width/2;
+            }
+            else{
+                entier = entier + 2*(x_axe_temp-entier);
+            }
+            tab_x_tmp[i] = entier;
+            i++;
+        }
+
+        this.setTab_x(tab_x_tmp);
+        //this.setTab_y(tab_y_tmp);
+
+        System.out.print("Liste des coordonnées après symétrie axiale d'un polygone :\n");
+        for(Integer entier: this.getTab_x()){
+            System.out.println("x: " + entier);
+        }
+        for(Integer entier: this.getTab_y()){
+            System.out.println("y: " + entier);
+        }
     }
 }
