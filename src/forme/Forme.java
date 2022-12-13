@@ -88,12 +88,12 @@ public abstract class Forme implements Calcul {
     /**
      * En mathématiques, une matrice orthogonale de déterminant 1
      */
-    public abstract void rotation(int width, int height);
+    public abstract void rotation(int width, int height, int degres);
 
     /**
      * Fait tourner les figures de 180°
      */
-    public abstract void symetrie_centrale(int width, int height, int degres);
+    public abstract void symetrie_centrale(int width, int height);
 
     /**
      * Transformation géométrique du plan qui modélise un « pliage » ou un « effet miroir »

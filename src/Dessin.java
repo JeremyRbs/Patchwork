@@ -78,7 +78,31 @@ public class Dessin implements Calcul {
         this.panelDessin = panelDessin;
     }
 
-    public void getHomothetieDessin(){
+    public JPanel getHomothetieDessin(){
+
+        HashSet<Image> nouvelleListeImages = new HashSet<Image>();
+        HashSet<Forme> nouvelleListeFormes = new HashSet<Forme>();
+
+        if(panelDessin != null) {
+            System.out.println("\nHomothetie\n");
+            panelDessin.removeAll();
+            for (Image image : listeImages) {
+                JPanel panel = new JPanel();
+                panel.setLayout(new BorderLayout());
+                panel.setBorder(blackline);
+                for(Forme forme: image.getListeFormes()){
+                    forme.homothetie(200,200);
+                    nouvelleListeFormes.add(forme);
+                }
+                image.setListeFormes(nouvelleListeFormes);
+                nouvelleListeFormes = new HashSet<>();
+                nouvelleListeImages.add(image);
+                panel.add(image, BorderLayout.CENTER);
+                panelDessin.add(panel);
+            }
+            this.setListeImages(nouvelleListeImages);
+        }
+        return panelDessin;
 
     }
     public JPanel getTranslationDessin(){
@@ -107,19 +131,138 @@ public class Dessin implements Calcul {
         }
         return panelDessin;
     }
-    public void getRotationDessin(){
+    public JPanel getRotationDessin(){
+
+        HashSet<Image> nouvelleListeImages = new HashSet<Image>();
+        HashSet<Forme> nouvelleListeFormes = new HashSet<Forme>();
+
+        if(panelDessin != null) {
+            System.out.println("\nRotation\n");
+            panelDessin.removeAll();
+            for (Image image : listeImages) {
+                JPanel panel = new JPanel();
+                panel.setLayout(new BorderLayout());
+                panel.setBorder(blackline);
+                for(Forme forme: image.getListeFormes()){
+                    forme.rotation(200,200, 45);
+                    nouvelleListeFormes.add(forme);
+                }
+                image.setListeFormes(nouvelleListeFormes);
+                nouvelleListeFormes = new HashSet<>();
+                nouvelleListeImages.add(image);
+                panel.add(image, BorderLayout.CENTER);
+                panelDessin.add(panel);
+            }
+            this.setListeImages(nouvelleListeImages);
+        }
+        return panelDessin;
+    }
+    public JPanel getSymetrieCentraleDessin(){
+
+        HashSet<Image> nouvelleListeImages = new HashSet<Image>();
+        HashSet<Forme> nouvelleListeFormes = new HashSet<Forme>();
+
+        if(panelDessin != null) {
+            System.out.println("\nSymetrie Centrale\n");
+            panelDessin.removeAll();
+            for (Image image : listeImages) {
+                JPanel panel = new JPanel();
+                panel.setLayout(new BorderLayout());
+                panel.setBorder(blackline);
+                for(Forme forme: image.getListeFormes()){
+                    forme.symetrie_centrale(200,200);
+                    nouvelleListeFormes.add(forme);
+                }
+                image.setListeFormes(nouvelleListeFormes);
+                nouvelleListeFormes = new HashSet<>();
+                nouvelleListeImages.add(image);
+                panel.add(image, BorderLayout.CENTER);
+                panelDessin.add(panel);
+            }
+            this.setListeImages(nouvelleListeImages);
+        }
+        return panelDessin;
 
     }
-    public void getSymetrieCentraleDessin(){
+    public JPanel getSymetrieAxialeDessin(){
+
+        HashSet<Image> nouvelleListeImages = new HashSet<Image>();
+        HashSet<Forme> nouvelleListeFormes = new HashSet<Forme>();
+
+        if(panelDessin != null) {
+            System.out.println("\nSymétrie Axiale\n");
+            panelDessin.removeAll();
+            for (Image image : listeImages) {
+                JPanel panel = new JPanel();
+                panel.setLayout(new BorderLayout());
+                panel.setBorder(blackline);
+                for(Forme forme: image.getListeFormes()){
+                    forme.symetrie_axiale(200,200);
+                    nouvelleListeFormes.add(forme);
+                }
+                image.setListeFormes(nouvelleListeFormes);
+                nouvelleListeFormes = new HashSet<>();
+                nouvelleListeImages.add(image);
+                panel.add(image, BorderLayout.CENTER);
+                panelDessin.add(panel);
+            }
+            this.setListeImages(nouvelleListeImages);
+        }
+        return panelDessin;
 
     }
-    public void getSymetrieAxialeDessin(){
+    public JPanel getTriParPerimetreDessin(){
+
+        HashSet<Image> nouvelleListeImages = new HashSet<Image>();
+        HashSet<Forme> nouvelleListeFormes = new HashSet<Forme>();
+
+        if(panelDessin != null) {
+            System.out.println("\nTri par Perimetre\n");
+            panelDessin.removeAll();
+            for (Image image : listeImages) {
+                JPanel panel = new JPanel();
+                panel.setLayout(new BorderLayout());
+                panel.setBorder(blackline);
+                for(Forme forme: image.getListeFormes()){
+                    forme.symetrie_centrale(200,200); // --------------------------- A refaire quand la fonction Tri par Perimetre existera
+                    nouvelleListeFormes.add(forme);
+                }
+                image.setListeFormes(nouvelleListeFormes);
+                nouvelleListeFormes = new HashSet<>();
+                nouvelleListeImages.add(image);
+                panel.add(image, BorderLayout.CENTER);
+                panelDessin.add(panel);
+            }
+            this.setListeImages(nouvelleListeImages);
+        }
+        return panelDessin;
 
     }
-    public void getTriParPerimetreDessin(){
+    public JPanel getTriParAireDessin(){
 
-    }
-    public void getTriParAireDessin(){
+        HashSet<Image> nouvelleListeImages = new HashSet<Image>();
+        HashSet<Forme> nouvelleListeFormes = new HashSet<Forme>();
+
+        if(panelDessin != null) {
+            System.out.println("\nTri par aire\n");
+            panelDessin.removeAll();
+            for (Image image : listeImages) {
+                JPanel panel = new JPanel();
+                panel.setLayout(new BorderLayout());
+                panel.setBorder(blackline);
+                for(Forme forme: image.getListeFormes()){
+                    forme.symetrie_centrale(200,200); // ------------------------- A faire quand la fonction tri sera faite
+                    nouvelleListeFormes.add(forme);
+                }
+                image.setListeFormes(nouvelleListeFormes);
+                nouvelleListeFormes = new HashSet<>();
+                nouvelleListeImages.add(image);
+                panel.add(image, BorderLayout.CENTER);
+                panelDessin.add(panel);
+            }
+            this.setListeImages(nouvelleListeImages);
+        }
+        return panelDessin;
 
     }
 
