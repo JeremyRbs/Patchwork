@@ -144,7 +144,7 @@ public class Dessin implements Calcul {
                 panel.setLayout(new BorderLayout());
                 panel.setBorder(blackline);
                 for(Forme forme: image.getListeFormes()){
-                    forme.rotation(200,200, 45);
+                    forme.rotation(200,200, 30);
                     nouvelleListeFormes.add(forme);
                 }
                 image.setListeFormes(nouvelleListeFormes);
