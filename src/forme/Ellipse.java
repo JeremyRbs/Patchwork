@@ -47,6 +47,8 @@ public class Ellipse extends Forme{
 
     @Override
     public void symetrie_axiale(int width, int height) {
-
+        System.out.println("Avant symetrie axiale ellipse: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
+        this.setX(this.getX()+width);
+        System.out.println("Après symetrie axiale ellipse: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
     }
 }
