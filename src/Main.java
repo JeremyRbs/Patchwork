@@ -64,24 +64,28 @@ public class Main {
         });
 
         btn_homothetie.addActionListener(e -> {
+            panelPrincipal.remove(dessin.getPanelDessin());
             panelPrincipal.add(dessin.getHomothetieDessin());
             panelPrincipal.revalidate();
             panelPrincipal.repaint();
         });
 
         btn_translation.addActionListener(e -> {
+            panelPrincipal.remove(dessin.getPanelDessin());
             panelPrincipal.add(dessin.getTranslationDessin());
             panelPrincipal.revalidate();
             panelPrincipal.repaint();
         });
 
         btn_rotation.addActionListener(e -> {
+            panelPrincipal.remove(dessin.getPanelDessin());
             panelPrincipal.add(dessin.getRotationDessin());
             panelPrincipal.revalidate();
             panelPrincipal.repaint();
         });
 
         btn_symetrie_centrale.addActionListener(e -> {
+            panelPrincipal.remove(dessin.getPanelDessin());
             panelPrincipal.add(dessin.getSymetrieCentraleDessin());
             panelPrincipal.revalidate();
             panelPrincipal.repaint();
@@ -89,18 +93,21 @@ public class Main {
         });
 
         btn_symetrie_axiale.addActionListener(e -> {
+            panelPrincipal.remove(dessin.getPanelDessin());
             panelPrincipal.add(dessin.getSymetrieAxialeDessin());
             panelPrincipal.revalidate();
             panelPrincipal.repaint();
         });
 
         btn_tri_par_perimetre.addActionListener(e -> {
+            panelPrincipal.remove(dessin.getPanelDessin());
             panelPrincipal.add(dessin.getTriParPerimetreDessin());
             panelPrincipal.revalidate();
             panelPrincipal.repaint();
         });
 
         btn_tri_par_aire.addActionListener(e -> {
+            panelPrincipal.remove(dessin.getPanelDessin());
             panelPrincipal.add(dessin.getTriParAireDessin());
             panelPrincipal.revalidate();
             panelPrincipal.repaint();
