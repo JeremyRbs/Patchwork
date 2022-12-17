@@ -2,22 +2,45 @@ package forme;
 import java.awt.geom.Point2D;
 import java.security.InvalidParameterException;
 
+/**
+ * Classe qui définit une ligne
+ */
 public class Ligne extends Forme {
 
+    /**
+     * Constructeur de la classe Ligne
+     * @param x1 abcisse du sommet 1 d'une ligne
+     * @param x2 ordonnée du sommet 1 d'une ligne
+     * @param y1 abcisse du sommet 2 d'une ligne
+     * @param y2 ordonnée du sommet 2 d'une ligne
+     */
     public Ligne(int x1, int y1, int x2, int y2) {
         super(x1, y1, x2, y2);
     }
 
+    /**
+     * Calcule le périmètre d'une ligne
+     * @return périmètre d'une ligne
+     */
     @Override
     public double perimetre() {
         return 0;
     }
 
+    /**
+     * Calcule l'aire d'une ligne
+     * @return aire de la ligne
+     */
     @Override
     public double aire() {
         return 0;
     }
 
+    /**
+     * Applique une homothétie sur une ligne
+     * @param width  longeur de la fenêtre
+     * @param height largeur de la fenêtre
+     */
     @Override
     public void homothetie(int width, int height) {
         System.out.println("Avant homothetie ligne: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
@@ -28,6 +51,11 @@ public class Ligne extends Forme {
         System.out.println("Après homothetie ligne: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
     }
 
+    /**
+     * Applique une translation sur une ligne
+     * @param width  longeur de la fenêtre
+     * @param height largeur de la fenêtre
+     */
     @Override
     public void translation(int width, int height) {
         System.out.println("Avant translation ligne: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
@@ -38,6 +66,13 @@ public class Ligne extends Forme {
         System.out.println("Après translation ligne: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
     }
 
+    /**
+     * Applique une rotation sur une ligne
+     * @param width  longeur de la fenêtre
+     * @param height largeur de la fenêtre
+     * @param degres degré de rotation de la ligne
+     * @throws InvalidParameterException si l'angle entré est inférieur à 0 ou supérieur à 360
+     */
     @Override
     public void rotation(int width, int height, int degres) {
         System.out.println("Avant rotation ligne: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
@@ -53,6 +88,11 @@ public class Ligne extends Forme {
         System.out.println("Après rotation ligne: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
     }
 
+    /**
+     * Applique une symétrie centrale sur une ligne
+     * @param width  longeur de la fenêtre
+     * @param height largeur de la fenêtre
+     */
     @Override
     public void symetrie_centrale(int width, int height) {
         System.out.println("Avant symetrie centrale ligne: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
@@ -69,6 +109,11 @@ public class Ligne extends Forme {
         System.out.println("Après symetrie centrale ligne: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
     }
 
+    /**
+     * Applique une symétrie axiale sur une ligne
+     * @param width  longeur de la fenêtre
+     * @param height largeur de la fenêtre
+     */
     @Override
     public void symetrie_axiale(int width, int height) {
         System.out.println("Avant symetrie axiale ligne: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());

@@ -1,14 +1,14 @@
 import Interfaces.Calcul;
-import forme.Cercle;
-import forme.Ellipse;
 import forme.Forme;
-import forme.Ligne;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.util.HashSet;
 
+/**
+ * Classe qui implémente les méthodes d'un dessin
+ */
 public class Dessin implements Calcul {
 
     private HashSet<Image> listeImages;
@@ -18,6 +18,9 @@ public class Dessin implements Calcul {
     private int compter = 0;
     private Border blackline = BorderFactory.createLineBorder(Color.black);
 
+    /**
+     * Constructeur de la classe Dessin
+     */
     public Dessin() {
         this.listeImages = new HashSet<Image>();
         for(int i=0; i<nbImages; i++){
@@ -28,21 +31,34 @@ public class Dessin implements Calcul {
         this.panelDessin.setBorder(this.blackline);
     }
 
-    public Dessin(HashSet<Image> listeImages) {
-        this.listeImages = listeImages;
-    }
-
+    /**
+     * Récupère une liste d'images
+     * @return listeImages une liste d'images
+     */
     public HashSet<Image> getListeImages() {
         return listeImages;
     }
 
+    /**
+     * Modifie une liste d'images
+     * @param listeImages liste d'images
+     */
     public void setListeImages(HashSet<Image> listeImages) {
         this.listeImages = listeImages;
     }
 
+    /**
+     * Récupère un panel de dessin
+     * @return un panel de dessin
+     */
     public JPanel getPanelDessin() {
         return panelDessin;
     }
+
+    /**
+     * Initialise un nouveau panel
+     * @return un panel
+     */
     public JPanel changePanelDessin() {
 
         HashSet<Image> nouvelleListeImages = new HashSet<Image>();
@@ -74,10 +90,18 @@ public class Dessin implements Calcul {
         return panelDessin;
     }
 
+    /**
+     * Modifie un panel
+     * @param panelDessin panel de dessin
+     */
     public void setPanelDessin(JPanel panelDessin) {
         this.panelDessin = panelDessin;
     }
 
+    /**
+     * Applique l'homothétie sur le dessin
+     * @return panel de dessin
+     */
     public JPanel getHomothetieDessin(){
 
         HashSet<Image> nouvelleListeImages = new HashSet<Image>();
@@ -105,6 +129,11 @@ public class Dessin implements Calcul {
         return panelDessin;
 
     }
+
+    /**
+     * Applique la translation sur le dessin
+     * @return panel de dessin
+     */
     public JPanel getTranslationDessin(){
 
         HashSet<Image> nouvelleListeImages = new HashSet<Image>();
@@ -131,6 +160,11 @@ public class Dessin implements Calcul {
         }
         return panelDessin;
     }
+
+    /**
+     * Applique la rotation sur le dessin
+     * @return panel de dessin
+     */
     public JPanel getRotationDessin(){
 
         HashSet<Image> nouvelleListeImages = new HashSet<Image>();
@@ -157,6 +191,11 @@ public class Dessin implements Calcul {
         }
         return panelDessin;
     }
+
+    /**
+     * Applique la symétrie centrale sur le dessin
+     * @return panel de dessin
+     */
     public JPanel getSymetrieCentraleDessin(){
 
         HashSet<Image> nouvelleListeImages = new HashSet<Image>();
@@ -184,6 +223,11 @@ public class Dessin implements Calcul {
         return panelDessin;
 
     }
+
+    /**
+     * Applique la symétrie axiale sur le dessin
+     * @return panel de dessin
+     */
     public JPanel getSymetrieAxialeDessin(){
 
         HashSet<Image> nouvelleListeImages = new HashSet<Image>();
@@ -211,6 +255,11 @@ public class Dessin implements Calcul {
         return panelDessin;
 
     }
+
+    /**
+     * Applique le tri par périmètre sur le dessin
+     * @return panel de dessin
+     */
     public JPanel getTriParPerimetreDessin(){
 
         HashSet<Image> nouvelleListeImages = new HashSet<Image>();
@@ -238,6 +287,11 @@ public class Dessin implements Calcul {
         return panelDessin;
 
     }
+
+    /**
+     * Applique le tri par aire sur le dessin
+     * @return panel de dessin
+     */
     public JPanel getTriParAireDessin(){
 
         HashSet<Image> nouvelleListeImages = new HashSet<Image>();
@@ -266,6 +320,10 @@ public class Dessin implements Calcul {
 
     }
 
+    /**
+     * Calcule la somme des périmètres d'une liste d'images
+     * @return  somme des périmètres d'une liste d'images
+     */
     @Override
     public double perimetre() {
 
@@ -278,6 +336,10 @@ public class Dessin implements Calcul {
         return p;
     }
 
+    /**
+     * Calcule la somme des aires d'une liste d'images
+     * @return  somme des aires des formes d'une liste d'images
+     */
     @Override
     public double aire() {
 

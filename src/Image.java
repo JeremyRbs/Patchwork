@@ -5,6 +5,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.HashSet;
 
+/**
+ * Composition d'une image
+ */
 public class Image extends JComponent implements Calcul {
 
     private HashSet<Forme> listeFormes;
@@ -18,6 +21,9 @@ public class Image extends JComponent implements Calcul {
     private int nbAleatoire;
     private int nbAleatoireTableau;
 
+    /**
+     * Constructeur de la classe Image
+     */
     public Image() {
 
         this.listeFormes = new HashSet<Forme>();
@@ -62,18 +68,26 @@ public class Image extends JComponent implements Calcul {
         }
     }
 
-    public Image(HashSet<Forme> listeFormes) {
-        this.listeFormes = listeFormes;
-    }
-
+    /**
+     * Récupère une liste de formes
+     * @return liste de formes
+     */
     public HashSet<Forme> getListeFormes() {
         return listeFormes;
     }
 
+    /**
+     * Modifier une liste de formes
+     * @param listeFormes
+     */
     public void setListeFormes(HashSet<Forme> listeFormes) {
         this.listeFormes = listeFormes;
     }
 
+    /**
+     * Dessine une forme
+     * @param g graphique
+     */
     public void paint(Graphics g){
 
         System.out.println("\nFormes :");
@@ -97,6 +111,10 @@ public class Image extends JComponent implements Calcul {
         }
     }
 
+    /**
+     * Calcule la somme des périmètres des formes d'une image
+     * @return  somme des périmètres des formes d'une image
+     */
     @Override
     public double perimetre() {
 
@@ -108,6 +126,10 @@ public class Image extends JComponent implements Calcul {
         return p;
     }
 
+    /**
+     * Calcule la somme des aires des formes d'une image
+     * @return  somme des aires des formes d'une image
+     */
     @Override
     public double aire() {
 
