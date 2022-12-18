@@ -43,8 +43,8 @@ public class Ellipse extends Forme{
         System.out.println("Avant homothetie ellipse: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
         this.setX(this.getX()+50);
         this.setY(this.getY()+50);
-        this.setWidth(this.getWidth()-50);
-        this.setHeight(this.getHeight()-50);
+        this.setWidth(this.getWidth()-this.getWidth()/2);
+        this.setHeight(this.getHeight()-this.getHeight()/2);
         System.out.println("Après homothetie ellipse: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
     }
 
@@ -56,8 +56,13 @@ public class Ellipse extends Forme{
     @Override
     public void translation(int width, int height) {
         System.out.println("Avant translation ellipse: \nx: " + this.getX() + ", y: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
-        this.setX(this.getX()+50);
-        this.setY(this.getY()+50);
+        if(this.getX() >= width || this.getY() >= height){
+            this.setX(10);
+            this.setY(10);
+        } else {
+            this.setX(this.getX() + 50);
+            this.setY(this.getY() + 50);
+        }
         System.out.println("Après translation ellipse: \nx: " + this.getX() + ", y: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
     }
 
@@ -97,5 +102,14 @@ public class Ellipse extends Forme{
         System.out.println("Avant symetrie axiale ellipse: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
         this.setX(this.getX()+width);
         System.out.println("Après symetrie axiale ellipse: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
+    }
+
+    /**
+     * @param o the object to be compared.
+     * @return
+     */
+    @Override
+    public int compareTo(Forme o) {
+        return (int) ((int) this.perimetre() - o.perimetre());
     }
 }

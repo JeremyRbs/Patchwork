@@ -42,6 +42,8 @@ public class Main {
         JButton btn_symetrie_axiale = new JButton("Symetrie Axiale");
         JButton btn_tri_par_perimetre = new JButton("Tri par périmètre");
         JButton btn_tri_par_aire = new JButton("Tri par aire");
+        JButton btn_copie_image = new JButton("Copie image");
+        JButton btn_copie_dessin = new JButton("Copie dessin");
 
         /*
          Définition de la fenêtre inférieure
@@ -64,51 +66,56 @@ public class Main {
         });
 
         btn_homothetie.addActionListener(e -> {
-            panelPrincipal.remove(dessin.getPanelDessin());
-            panelPrincipal.add(dessin.getHomothetieDessin());
+            dessin.getHomothetieDessin();
             panelPrincipal.revalidate();
             panelPrincipal.repaint();
         });
 
         btn_translation.addActionListener(e -> {
-            panelPrincipal.remove(dessin.getPanelDessin());
-            panelPrincipal.add(dessin.getTranslationDessin());
+            dessin.getTranslationDessin();
             panelPrincipal.revalidate();
             panelPrincipal.repaint();
         });
 
         btn_rotation.addActionListener(e -> {
-            panelPrincipal.remove(dessin.getPanelDessin());
-            panelPrincipal.add(dessin.getRotationDessin());
+            dessin.getRotationDessin();
             panelPrincipal.revalidate();
             panelPrincipal.repaint();
         });
 
         btn_symetrie_centrale.addActionListener(e -> {
-            panelPrincipal.remove(dessin.getPanelDessin());
-            panelPrincipal.add(dessin.getSymetrieCentraleDessin());
+            dessin.getSymetrieCentraleDessin();
             panelPrincipal.revalidate();
             panelPrincipal.repaint();
 
         });
 
         btn_symetrie_axiale.addActionListener(e -> {
-            panelPrincipal.remove(dessin.getPanelDessin());
-            panelPrincipal.add(dessin.getSymetrieAxialeDessin());
+            dessin.getSymetrieAxialeDessin();
             panelPrincipal.revalidate();
             panelPrincipal.repaint();
         });
 
         btn_tri_par_perimetre.addActionListener(e -> {
-            panelPrincipal.remove(dessin.getPanelDessin());
-            panelPrincipal.add(dessin.getTriParPerimetreDessin());
+            dessin.getTriParPerimetreDessin();
             panelPrincipal.revalidate();
             panelPrincipal.repaint();
         });
 
         btn_tri_par_aire.addActionListener(e -> {
-            panelPrincipal.remove(dessin.getPanelDessin());
-            panelPrincipal.add(dessin.getTriParAireDessin());
+            dessin.getTriParAireDessin();
+            panelPrincipal.revalidate();
+            panelPrincipal.repaint();
+        });
+
+        btn_copie_image.addActionListener(e -> {
+            dessin.getCopieImage();
+            panelPrincipal.revalidate();
+            panelPrincipal.repaint();
+        });
+
+        btn_copie_dessin.addActionListener(e -> {
+            dessin.getCopieDessin();
             panelPrincipal.revalidate();
             panelPrincipal.repaint();
         });
@@ -121,6 +128,8 @@ public class Main {
         sousPanelMenu_2.add(btn_symetrie_axiale);
         sousPanelMenu_2.add(btn_tri_par_perimetre);
         sousPanelMenu_2.add(btn_tri_par_aire);
+        sousPanelMenu_2.add(btn_copie_image);
+        sousPanelMenu_2.add(btn_copie_dessin);
 
         panelMenu.add(sousPanelMenu_1);
         panelMenu.add(sousPanelMenu_2);

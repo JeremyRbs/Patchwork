@@ -5,7 +5,7 @@ import Interfaces.Calcul;
 /**
  * Classe abstraite pour initialiser une forme
  */
-public abstract class Forme implements Calcul {
+public abstract class Forme implements Calcul, Comparable<Forme> {
 
     private int x;
     private int y;

@@ -3,6 +3,7 @@ import forme.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Arrays;
 import java.util.HashSet;
 
 /**
@@ -139,5 +140,20 @@ public class Image extends JComponent implements Calcul {
             a += forme.aire();
         }
         return a;
+    }
+
+    @Override
+    public String toString() {
+        return "Image{" +
+                "listeFormes=" + listeFormes +
+                ", x=" + x +
+                ", y=" + y +
+                ", tab_x=" + Arrays.toString(tab_x) +
+                ", tab_y=" + Arrays.toString(tab_y) +
+                ", width=" + width +
+                ", height=" + height +
+                ", nbAleatoire=" + nbAleatoire +
+                ", nbAleatoireTableau=" + nbAleatoireTableau +
+                '}';
     }
 }

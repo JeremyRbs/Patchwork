@@ -335,4 +335,13 @@ public class Polygone extends Forme {
             System.out.println("y: " + entier);
         }
     }
+
+    /**
+     * @param o the object to be compared.
+     * @return
+     */
+    @Override
+    public int compareTo(Forme o) {
+        return (int) ((int) this.perimetre() - o.perimetre());
+    }
 }

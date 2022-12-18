@@ -59,10 +59,20 @@ public class Ligne extends Forme {
     @Override
     public void translation(int width, int height) {
         System.out.println("Avant translation ligne: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
-        this.setX(this.getX()+50);
-        this.setY(this.getY()+50);
-        this.setWidth(this.getWidth()+50);
-        this.setHeight(this.getHeight()+50);
+        if(this.getX() >= width || this.getY() >= height){
+            this.setX(10);
+            this.setY(10);
+        } else {
+            this.setX(this.getX() + 50);
+            this.setY(this.getY() + 50);
+        }
+        if(this.getWidth() >= width || this.getWidth() >= height){
+            this.setWidth(10);
+            this.setHeight(10);
+        } else {
+            this.setWidth(this.getWidth() + 50);
+            this.setHeight(this.getHeight() + 50);
+        }
         System.out.println("Après translation ligne: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
     }
 
@@ -122,5 +132,14 @@ public class Ligne extends Forme {
         this.setWidth(this.getWidth()+2*distance_x2_de_axe_temp);
         this.setX(this.getX()+2*(width/2));
         System.out.println("Après symetrie axiale ligne: \nx1: " + this.getX() + ", y1: " + getY() + ", x2: " + this.getWidth() + ", y2: " + getHeight());
+    }
+
+    /**
+     * @param o the object to be compared.
+     * @return
+     */
+    @Override
+    public int compareTo(Forme o) {
+        return (int) ((int) this.perimetre() - o.perimetre());
     }
 }
